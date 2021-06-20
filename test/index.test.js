@@ -1,26 +1,26 @@
-import ing from "../src/index.ts";
+import on from "../src/index.ts";
 
-describe("await-ing", () => {
+describe("await-on", () => {
   it("is a function", () => {
-    expect(typeof ing).toBe("function");
+    expect(typeof on).toBe("function");
   });
 
   it("returns an Array containing 2 values", async () => {
-    const result = await ing(Promise.resolve(42));
+    const result = await on(Promise.resolve(42));
 
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(2);
   });
 
   it("returns a non-Error value as the first element of the Array and a null value as the second element if the Promise resolves", async () => {
-    const [result, error] = await ing(Promise.resolve(42));
+    const [result, error] = await on(Promise.resolve(42));
 
     expect(result).not.toBeNull();
     expect(error).toBeNull();
   });
 
   it("returns a null value as the first element of the Array and an Error as the second element if the Promise rejects", async () => {
-    const [result, error] = await ing(Promise.reject("Some error"));
+    const [result, error] = await on(Promise.reject("Some error"));
 
     expect(result).toBeNull();
     expect(error).not.toBeNull();
@@ -32,7 +32,7 @@ describe("await-ing", () => {
       throw someError;
     });
 
-    const [result, error] = await ing(promise);
+    const [result, error] = await on(promise);
 
     expect(result).toBeNull();
     expect(error).toEqual(someError);
@@ -46,7 +46,7 @@ describe("await-ing", () => {
     });
     const promise2 = new Promise((resolve) => resolve(42));
 
-    const [result, error] = await ing([promise1, promise2]);
+    const [result, error] = await on([promise1, promise2]);
 
     expect(result).toBeNull();
     expect(error).toEqual(someError);
@@ -57,7 +57,7 @@ describe("await-ing", () => {
     const promise = new Promise((resolve) => resolve(42));
     const fn = () => 42;
 
-    const [result, error] = await ing([promise, someError, fn]);
+    const [result, error] = await on([promise, someError, fn]);
 
     expect(result).toBeNull();
     expect(error).toEqual(someError);
@@ -66,7 +66,7 @@ describe("await-ing", () => {
   it("returns a null value as the first element of the Array and an Error as the second element if passed an error", async () => {
     const someError = new Error("Some error");
 
-    const [result, error] = await ing(someError);
+    const [result, error] = await on(someError);
 
     expect(result).toBeNull();
     expect(error).toEqual(someError);
@@ -75,7 +75,7 @@ describe("await-ing", () => {
   it("accepts a value as argument", async () => {
     const value = 42;
 
-    const [result, error] = await ing(value);
+    const [result, error] = await on(value);
 
     expect(result).toEqual(value);
     expect(error).toBeNull();
@@ -85,7 +85,7 @@ describe("await-ing", () => {
     const value = 42;
     const promise = new Promise((resolve) => resolve(value));
 
-    const [result, error] = await ing(promise);
+    const [result, error] = await on(promise);
 
     expect(result).toEqual(value);
     expect(error).toBeNull();
@@ -95,7 +95,7 @@ describe("await-ing", () => {
     const value = 42;
     const fn = () => value;
 
-    const [result, error] = await ing(fn);
+    const [result, error] = await on(fn);
 
     expect(result).toEqual(value);
     expect(error).toBeNull();
@@ -105,7 +105,7 @@ describe("await-ing", () => {
     const value = 42;
     const fn = async () => new Promise((resolve) => resolve(value));
 
-    const [result, error] = await ing(fn);
+    const [result, error] = await on(fn);
 
     expect(result).toEqual(value);
     expect(error).toBeNull();
@@ -117,7 +117,7 @@ describe("await-ing", () => {
     const promise = new Promise((resolve) => resolve(value1));
     const fn = () => new Promise((resolve) => resolve(value2));
 
-    const [result, error] = await ing([promise, fn]);
+    const [result, error] = await on([promise, fn]);
 
     expect(Array.isArray(result)).toBe(true);
     expect(result[0]).toEqual(value1);

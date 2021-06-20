@@ -1,4 +1,4 @@
-async function awaitFor<T, U = Error>(
+async function on<T, U = Error>(
   fn: Promise<T> | Function | Array<Promise<T> | Function>
 ): Promise<[T, null] | [null, U]> {
   try {
@@ -48,4 +48,4 @@ async function awaitFor<T, U = Error>(
   }
 }
 
-export default awaitFor;
+export default on;
