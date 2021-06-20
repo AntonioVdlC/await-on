@@ -1,5 +1,5 @@
 {
-  "name": "await-for",
+  "name": "await-ing",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.cjs.js",
@@ -26,7 +26,7 @@
   "keywords": [
     "async",
     "await",
-    "await-for",
+    "await-ing",
     "error",
     "handling",
     "promise"
@@ -34,12 +34,12 @@
   "author": "Antonio Villagra De La Cruz",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AntonioVdlC/await-for.git"
+    "url": "git+https://github.com/AntonioVdlC/await-ing.git"
   },
   "bugs": {
-    "url": "https://github.com/AntonioVdlC/await-for/issues"
+    "url": "https://github.com/AntonioVdlC/await-ing/issues"
   },
-  "homepage": "https://github.com/AntonioVdlC/await-for#readme",
+  "homepage": "https://github.com/AntonioVdlC/await-ing#readme",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.14.6",
