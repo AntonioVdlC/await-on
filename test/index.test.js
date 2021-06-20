@@ -1,6 +1,6 @@
 import ing from "../src/index.ts";
 
-describe("await-for", () => {
+describe("await-ing", () => {
   it("is a function", () => {
     expect(typeof ing).toBe("function");
   });
