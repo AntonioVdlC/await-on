@@ -1,6 +1,6 @@
-async function on<T, U = Error>(
+async function on<T, Error>(
   fn: Promise<T> | Function | Array<Promise<T> | Function>
-): Promise<[T, null] | [null, U]> {
+): Promise<[T, null] | [null, Error]> {
   try {
     if (fn instanceof Error) {
       // We throw right away if the input is an Error
@@ -44,7 +44,7 @@ async function on<T, U = Error>(
 
     return [result, null];
   } catch (error) {
-    return [null, error];
+    return [null, error as Error];
   }
 }
 
