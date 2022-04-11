@@ -1,6 +1,6 @@
 {
   "name": "@antoniovdlc/await-on",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Go-like error handling for async JavaScript functions (and more).",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
