@@ -1,4 +1,6 @@
-import on from "../src/index.ts";
+import { describe, it, expect } from "vitest";
+
+import on from "../src";
 
 describe("await-on", () => {
   it("is a function", () => {
@@ -114,14 +116,15 @@ describe("await-on", () => {
   it("accepts an Array of Promises and Functions as argument", async () => {
     const value1 = "hello";
     const value2 = "world";
-    const promise = new Promise((resolve) => resolve(value1));
-    const fn = () => new Promise((resolve) => resolve(value2));
+    const promise: Promise<string> = new Promise((resolve) => resolve(value1));
+    const fn: () => Promise<string> = () =>
+      new Promise((resolve) => resolve(value2));
 
-    const [result, error] = await on([promise, fn]);
+    const [result, error] = await on<string>([promise, fn]);
 
     expect(Array.isArray(result)).toBe(true);
-    expect(result[0]).toEqual(value1);
-    expect(result[1]).toEqual(value2);
+    expect(result?.[0]).toEqual(value1);
+    expect(result?.[1]).toEqual(value2);
     expect(error).toBeNull();
   });
 });

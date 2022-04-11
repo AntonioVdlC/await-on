@@ -1,6 +1,11 @@
-async function on<T, Error>(
-  fn: Promise<T> | Function | Array<Promise<T> | Function>
-): Promise<[T, null] | [null, Error]> {
+async function on<T>(
+  fn:
+    | T
+    | Promise<T>
+    | Error
+    | (() => T | Promise<T>)
+    | Array<T | Promise<T> | Error | (() => T | Promise<T>)>
+): Promise<[T | Array<T>, null] | [null, Error]> {
   try {
     if (fn instanceof Error) {
       // We throw right away if the input is an Error
